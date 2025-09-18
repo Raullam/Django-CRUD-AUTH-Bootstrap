@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+<h1>Tasks Completed</h1>
+
+<ul>
+  {% for task in tasks %}
+  <li>
+    Title:
+    <strong>{{ task.title }}</strong>
+    <br />
+    Description: {{ task.description }}
+    <br />
+    Date creation : {{ task.created_at }}
+    <br />
+    Date completed : {{ task.date_completed }}
+    <br />
+    User: {{ task.user.username }}
+    <br />
+    <a href="{% url 'task_detail' task.id %}">Ver Detalles</a>
+    <br />
+
+    {% if task.important %}
+    <span style="color: red;">(Important)</span>
+    <br />
+
+    {% endif %}
+    <br />
+  </li>
+  {% empty %}
+  <li>No completed tasks available.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

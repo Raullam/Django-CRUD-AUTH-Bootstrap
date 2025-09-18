@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block content %}
+<h1>Task Detail</h1>
+<ul>
+  <li>
+    Title:
+    <strong>{{ task.title }}</strong>
+    <br />
+    Description: {{ task.description }}
+    <br />
+    Date creation : {{ task.created_at }}
+    <br />
+    Date completed : {{ task.datecompleted }}
+    <br />
+    User: {{ task.user.username }}
+    <br />
+    {% if task.important %}
+    <span style="color: red;">(Important)</span>
+    {% endif %}
+    <br />
+  </li>
+</ul>
+
+<h2>Edit Task</h2>
+{{ error }}
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Update</button>
+</form>
+<form action="{% url 'complete_task' task.id %}" method="post">
+  {% csrf_token %}
+  <button type="submit">Complete</button>
+</form>
+<form action="{% url 'delete_task' task.id %}" method="post">
+  {% csrf_token %}
+  <button type="submit">Delete</button>
+
+  {% endblock %}
+</form>
