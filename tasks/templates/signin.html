@@ -1,10 +1,49 @@
-{% extends "base.html" %} {% block content %}
-<h1>
-  Sign In
-</h1>
-{{error}}
-<form action="/signin/" method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Sign In</button>
-  {% endblock %}
-</form>
+{% extends "base.html" %} {% block content %} {{error}}
+<main class="container mt-4">
+  <div class="row">
+    <section class="col-md-4 offset-md-4">
+      <form action="/signin/" method="post" class="card card-body">
+        <h1 class="text-center">
+          Sign In
+        </h1>
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="form-control"
+            placeholder="Write yout username"
+            required
+          />
+        </div>
+        <div class="mb-3 position-relative">
+          <label for="password1">Password</label>
+          <input
+            type="password"
+            name="password1"
+            id="password1"
+            class="form-control"
+            placeholder="Password"
+            required
+          />
+          <span
+            class="position-absolute top-50 end-0 translate-middle-y me-3"
+            style="cursor: pointer; margin-top: 11px;"
+            onclick="togglePassword('password1', this)"
+          >
+            <i
+              class="bi bi-eye"
+              id="icon-password1"
+              style="font-size: 1.3em;"
+            ></i>
+          </span>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Sign In</button>
+      </form>
+    </section>
+  </div>
+</main>
+{% endblock %}
