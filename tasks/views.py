@@ -30,9 +30,12 @@ def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html',{'form':UserCreationForm()})
     else:
-        if request.POST['password1'] == request.POST['password2']:
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        username = request.POST.get('username')
+        if password1 == password2:
             try:
-                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
+                user = User.objects.create_user(username=username, password=password1)
                 user.save()
                 login(request, user)
                 return redirect('home')
@@ -41,10 +44,10 @@ def signup(request):
                     'form':UserCreationForm(), 
                     'error':'El usuario ya existe.'
                     })
-    return render(request, 'signup.html', {
-        'form':UserCreationForm(), 
-        'error':'Las contraseñas no coinciden.'
-        })
+        return render(request, 'signup.html', {
+            'form':UserCreationForm(), 
+            'error':'Las contraseñas no coinciden.'
+            })
 @login_required
 def signout(request):
     logout(request)
