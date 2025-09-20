@@ -16,7 +16,7 @@ def signin(request):
    if request.method == 'GET':
        return render(request, 'signin.html',{'form':AuthenticationForm()})
    else:
-         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+         user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password1'))
          if user is None:
               return render(request, 'signin.html', {
                 'form':AuthenticationForm(), 

@@ -1,38 +1,49 @@
 {% extends "base.html" %} {% block content %}
-<h1>Task Detail</h1>
-<ul>
-  <li>
-    Title:
-    <strong>{{ task.title }}</strong>
-    <br />
-    Description: {{ task.description }}
-    <br />
-    Date creation : {{ task.created_at }}
-    <br />
-    Date completed : {{ task.datecompleted }}
-    <br />
-    User: {{ task.user.username }}
-    <br />
-    {% if task.important %}
-    <span style="color: red;">(Important)</span>
-    {% endif %}
-    <br />
-  </li>
-</ul>
+<main class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="text-center display-3">Task Detail</h1>
+      <ul class="list-group mb-4">
+        <li class="list-group-item mb-3">
+          Title:
+          <strong>{{ task.title }}</strong>
+          <br />
+          Description: {{ task.description }}
+          <br />
+          Date creation : {{ task.created_at }}
+          <br />
+          Date completed : {{ task.date_completed }}
+          <br />
+          User: {{ task.user.username }}
+          <br />
+          {% if task.important %}
+          <span style="color: red;">(Important)</span>
+          {% endif %}
+          <br />
+        </li>
+      </ul>
 
-<h2>Edit Task</h2>
-{{ error }}
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Update</button>
-</form>
-<form action="{% url 'complete_task' task.id %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Complete</button>
-</form>
-<form action="{% url 'delete_task' task.id %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Delete</button>
-
-  {% endblock %}
-</form>
+      <h2 class="mb-3">Edit Task</h2>
+      {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+      <form method="post" class="mb-2">
+        {% csrf_token %} {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Update</button>
+      </form>
+      <form
+        action="{% url 'complete_task' task.id %}"
+        method="post"
+        class="mb-2"
+      >
+        {% csrf_token %}
+        <button class="btn btn-success" type="submit">Complete</button>
+      </form>
+      <form action="{% url 'delete_task' task.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}
