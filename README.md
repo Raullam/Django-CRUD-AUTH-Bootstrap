@@ -57,7 +57,7 @@ Esto es una base/ejemplo de una aplicación web desarrollada con Python usando D
 - Bootstrap
 
 ## Screenshots / Capturas de pantalla
-*Falta añadir imágenes,proximamente cuando este terminado*
+*Falta añadir imágenes, lo podeis visitar y ver aquí*
 
 ## License / Licencia
 MIT
