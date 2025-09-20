@@ -2,7 +2,7 @@ services:
   - type: web
     name: django-crud-auth
     env: python
-    buildCommand: "python manage.py migrate"
+    buildCommand: "python manage.py migrate && python manage.py collectstatic --noinput"
     startCommand: "gunicorn djangocrud.wsgi"
     envVars:
       - key: SECRET_KEY
