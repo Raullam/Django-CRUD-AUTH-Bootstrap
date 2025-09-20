@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: django-crud-auth
+    env: python
+    buildCommand: "python manage.py migrate"
+    startCommand: "gunicorn djangocrud.wsgi"
+    envVars:
+      - key: SECRET_KEY
+        value: "Qv1QwQwK1w9QvQwK1wQv1QwK1w9QvQwK1wQv1QwK1w9QvQwK1wQv1QwK1w9QvQwK1w"
+      # DATABASE_URL se añade automáticamente si usas el servicio PostgreSQL de Render
