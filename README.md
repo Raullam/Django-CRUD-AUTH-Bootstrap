@@ -44,11 +44,19 @@ Esto es una base/ejemplo de una aplicación web desarrollada con Python usando D
    python manage.py runserver
    ```
 
-## Usage / Uso
-- Access the app at `http://127.0.0.1:8000/` / Accede a la app en `http://127.0.0.1:8000/`
-- Register a new user or log in with an existing account / Regístrate o inicia sesión
-- Manage your tasks (create, edit, complete, delete) / Gestiona tus tareas (crear, editar, completar, eliminar)
-- Access the admin panel at `/admin` with your superuser credentials / Accede al panel de administración en `/admin` con tu superusuario
+
+
+## Usage
+- You can run the app locally at `http://127.0.0.1:8000/`.
+- Or you can see it deployed online on Render: [https://django-crud-auth-sqlite-bootstrap.onrender.com/](https://django-crud-auth-sqlite-bootstrap.onrender.com/)
+- Register or log in to manage your tasks.
+- Access the admin panel at `/admin` with your superuser.
+
+## Uso
+- Puedes ejecutar la app de forma local en `http://127.0.0.1:8000/`.
+- También puedes verla desplegada online en Render: [https://django-crud-auth-sqlite-bootstrap.onrender.com/](https://django-crud-auth-sqlite-bootstrap.onrender.com/)
+- Regístrate o inicia sesión para gestionar tus tareas.
+- Accede al panel de administración en `/admin` con tu superusuario.
 
 ## Technologies / Tecnologías
 - Python
